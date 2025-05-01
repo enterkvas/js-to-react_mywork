@@ -45,6 +45,15 @@
 //     ${createButton('Like', 'background-color: maroon; color: white;')}
 // `;
 
+// function createButton(name, style){
+//     return `<button style="${style}">${name}</button>`
+// }
+
+// app.innerHTML = `
+//     ${createButton('Update', 'background-color: navy; color: white')}
+//     ${createButton('Like', 'background-color: green; color: black')}
+// `;
+
 //================================
 
 //1.5. (21:35) (Вывод ЧАСТИ СТРАНИЦЫ и немного отсебятины в виде вывода <h2> и картинки):
