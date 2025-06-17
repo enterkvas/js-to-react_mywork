@@ -8,19 +8,33 @@
 
 //     const isAuth = false;
 
-//     if(isAuth) return '<div>Log in</div>'
+//     if(isAuth)
 //     return '<div>Authenticator content</div>'
+//     return '<div>Log in here</div>'
 // }
 
 // const app = document.getElementById('app');
 
 // app.innerHTML = MyApp();
 
+
+const appDiv = document.getElementById('app');
+
+function MyApp(isAuth){
+    if(isAuth) 
+        return '<div>Authenticated content</div>';
+        return '<div>Log in here</div>';
+}
+appDiv.innerHTML = MyApp()
+
+
+
+
 // Variant 2 (УПРОЩЕНИЕ):
 
 // function MyApp(isAuth){
 
-//     if(isAuth) return '<div>Log in</div>'
+//     if(isAuth) return '<div>Log in here</div>'
 
 //     return '<div>Authenticator content</div>'
 // }

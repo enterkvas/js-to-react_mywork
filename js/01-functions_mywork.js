@@ -45,18 +45,11 @@
 //     ${createButton('Like', 'background-color: maroon; color: white;')}
 // `;
 
-// function createButton(name, style){
-//     return `<button style="${style}">${name}</button>`
-// }
-
-// app.innerHTML = `
-//     ${createButton('Update', 'background-color: navy; color: white')}
-//     ${createButton('Like', 'background-color: green; color: black')}
-// `;
-
 //================================
 
 //1.5. (21:35) (Вывод ЧАСТИ СТРАНИЦЫ и немного отсебятины в виде вывода <h2> и картинки):
+//В этом примере сильно помог Copilot (Запрос: "Учебный проект по веб...").
+// Суть проблемы: не изменялись линейные размеры картинки при вызове 
 
 // const app = document.querySelector('#app');
 
@@ -64,7 +57,7 @@
 //     return `<h1 style="${style}">${title}</h1>`;
 // }
 
-// const videoSrc = 'https://reactbootcamp.nyc3.digitaloceanspaces.com/big-buck-bunny.mp4'
+// const videoSrc = 'https://reactbootcamp.nyc3.digitaloceanspaces.com/big-buck-bunny.mp4';
 
 // function createVideo(videoSrc, style){
 //     return `<video src="${videoSrc}" style="${style}" controls></video>`;
@@ -78,8 +71,8 @@
 //     return `<h2>${title}</h2>`
 // }
 
-// function getImg(src, width, height=100){
-//     return `<img src="${src}" />`
+// function getImg(src, width, height){
+//     return `<img src="${src}" width="${width}" height="${height}">`
 // }
 
 // app.innerHTML = `
@@ -88,14 +81,14 @@
 //     ${createButton('Like', 'background-color: navy; color: white;')}
 //     ${createButton('Like', 'background-color: maroon; color: white;')}
 //     ${createTitle('Graphic content')}
-//     ${getImg('../images/earnLearn.jpg')}
+//     ${getImg('../images/earnLearn.jpg', 200, 100)}
 // `;
 
 //================================
 
 //11.03.25 вт
 
-//1.6. (27:25) (Вывод ЧАСТИ СТРАНИЦЫ, но уже с картинкой и с ипольз-м параметра "по  умолчанию"):
+//1.6. (27:25) (Вывод ЧАСТИ СТРАНИЦЫ с ипольз-м параметра "по  умолчанию"):
 
 // const app = document.getElementById('app');
 
@@ -103,13 +96,13 @@
 //     return `<h1>My Computer Setup</h1>`;
 // }
 
-// function getImage(src, width, height = '300'){
+// function getImage(src, width, height = '200'){
 //     return `<img src="${src}" width="${width}" height="${height}" style="object-fit: cover;" />`;
 // }
 
 // app.innerHTML = `
 //     ${createHeader()}
-//     ${getImage('../images/earnLearn.jpg', '300px')}
+//     ${getImage('../images/earnLearn.jpg', 800)}
 
 // `;
 
@@ -137,7 +130,7 @@
 
 // const photoProps = {
 //     src: 'https://images.unsplash.com/photo-1519681393784-d120267933ba',
-//     width: '300px'
+//     width: 200
 // }
 
 // function createPhoto(props){
@@ -246,32 +239,6 @@
 //04.03.25 вт
 
 //1.4.
-
-// My version:
-
-// const app = document.getElementById('app');
-
-// function createHeader(title){
-//     return `<h1>${title}</h1>`;
-// }
-
-// const img = './images/changeYourLife.jpg';
-
-// const defaultImg = `./images/earnLearn.jpg`;
-
-// function getImage(srcImg, style){
-//     if (srcImg === img){
-//         return `<img src="${img}">`;
-//     } else {
-//         return `<img src="${defaultImg}">`
-//     }
-//     // return `<img src="${srcImg}" style="${style}">`
-// }
-
-// app.innerHTML = `
-//     ${createHeader('My computer setup')}
-//     ${getImage(img, 'width: 300px; height: 200px; object-fit: cover;')}
-// `;
 
 // Original version:
 

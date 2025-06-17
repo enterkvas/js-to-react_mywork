@@ -4,7 +4,7 @@
 //
 // -------------------------------------------------------------
 
-// 1.1. (5:08) Destructuring на основе использования 
+// 4.1. (5:08) Destructuring на основе использования 
 // свойств(ключей) объекта в качестве переменных, 
 // передаваемых в виде параметров (в фигрурных скобках) в 
 // функцию-компонент:
@@ -28,7 +28,7 @@
 
 // ============================================
 
-// 1.2. (14:40) Destructuring с использованием оператора 
+// 4.2. (14:40) Destructuring с использованием оператора 
 // rest:
 
 // function Avatar({src, alt: name, ...rest}){
@@ -47,7 +47,7 @@
 
 // ============================================
 
-// 1.3. (19:04) Destructuring с использованием параметров 
+// 4.3. (19:04) Destructuring с использованием параметров 
 // "по умолчанию" (суть: если в объекте отсутвует 
 // какое-либо (или все сразу) из описанных свойств, то всё 
 // равно будут на странице выводиться значения "по 
@@ -72,7 +72,7 @@
 
 // =============================================
 
-// 1.4. (23:33) (На основе уже имеющегося Объекта создать 
+// 4.4. (23:33) (На основе уже имеющегося Объекта создать 
 // новый Объект, дополнив страрый новыми свойствами):
 
 // -- Sorce --:
@@ -229,49 +229,184 @@
 // переменная props (user, item, i - неважно), переданная в 
 // функцию User() в качестве параметра:
 
-const users = [
-    {
-        name: 'Lindsay Walton',
-        email: 'lindsay.walton@example.com'
-    },
-    {
-        name: 'Whitney Francis',
-        email: 'whitney.francis@example.com'
-    },
-    {
-        name: 'Tom Cook',
-        email: 'tom.cook@example.com'
-    }
-];
+// const users = [
+//     {
+//         name: 'Lindsay Walton',
+//         email: 'lindsay.walton@example.com'
+//     },
+//     {
+//         name: 'Whitney Francis',
+//         email: 'whitney.francis@example.com'
+//     },
+//     {
+//         name: 'Tom Cook',
+//         email: 'tom.cook@example.com'
+//     }
+// ];
 
-const livesIn = {
-    state: 'California',
-    country: 'USA' 
-}
+// const livesIn = {
+//     country: 'USA',
+//     state: 'California'
+// }
 
-const newUsers = users.map((user) => {
-    return {
-        ...user,
-        ...livesIn
-    }
-});
+// console.log({name: 'Bob', ...livesIn})
 
-function User(i){
-    return `<li>${i.name} with email: ${i.email} lives in ${i.state} ${i.country}</li>`
-}
+// const newUsers = users.map((user) => {
+//     return {
+//         ...user,
+//         ...livesIn
+//     }
+// })
 
-function Users(){
-    return `
-    <ul>
-        ${newUsers.map(User).join('')}
-    </ul>
-    `;
-}
+// console.log(newUsers)
 
-const appDiv = document.getElementById('app');
+// function User(user){
+//         return `
+//         <li>
+//             ${user.name} with email: ${user.email} lives in ${user.state} ${user.country}
+//         </li>
+//         `;
+// }
 
-appDiv.innerHTML = Users();
+// function Users(){
+//     return `
+//     <ul>
+//         ${newUsers.map(User).join('')}
+//     </ul>
+//     `;
+// }
+
+// const appDiv = document.getElementById('app');
+
+// appDiv.innerHTML = Users();
 
 // ================================================
 
 // 1.5. (38:10) 
+
+//-------------------------------------------
+
+// Вариант 1 (без декомпозиции, т.е. выводим сразу всё в 
+// функции Statistics()):
+
+// const date = 'today';
+
+// const stats = [
+// 	{ id: 1, record: { value: '71,897', name: 'Total Subscribers' } },
+// 	{ id: 2, record: { value: '58.16%', name: 'Avg. Open Rate' } },
+// 	{ id: 3, record: { value: '24.57%', name: 'Avg. Click Rate' } },
+// ].map((item) => {
+//     return {
+//         ...item,
+//         record: {
+//             ...item.record,
+//             date
+//         }
+//     }
+// })
+
+// console.log(stats)
+
+// function Statistics(){
+//     return `
+//         <ul>
+//             ${stats.map((item) => {
+//                 return `
+//                     <li id="$(id)">
+//                         <span>${item.record.name}</span>
+//                         <h2>${item.record.value}</h2>
+//                         <span>${item.record.date}</span>
+//                     </li><br><br>
+//                 `;
+//             }).join('')}
+//         </ul>
+//     `;
+// }
+
+// const appDiv = document.getElementById('app')
+
+// appDiv.innerHTML = Statistics()
+
+//-------------------------------------------
+
+// Вариант 2 (приеменение функиции Statistic() в функции Statistics()):
+
+// const date = 'today'
+
+// const stats = [
+// 	{ id: 1, record: { value: '71,897', name: 'Total Subscribers' } },
+// 	{ id: 2, record: { value: '58.16%', name: 'Avg. Open Rate' } },
+// 	{ id: 3, record: { value: '24.57%', name: 'Avg. Click Rate' } },
+// ].map((item) => {
+//     return {
+//         ...item,
+//         record: {
+//             ...item.record,
+//             date
+//         }
+//     }
+// })
+
+// function Statistic(stat){
+//     return `
+//     <li id="${stat.id}">
+//         <span>${stat.record.name}</span>
+//         <h2>${stat.record.value}</h2>
+//         <span>${stat.record.date}</span>
+//     </li><br><br>
+//     `;
+// }
+
+// function Statistics(){
+//     return `
+//     <ul>
+//         ${stats.map(Statistic).join('')}
+//     </ul>
+//     `;
+// }
+
+// const appDiv = document.getElementById('app')
+
+// appDiv.innerHTML = Statistics()
+
+//-------------------------------------------
+
+// Вариант 2 (приеменение функиции Statistic() в функции Statistics()):
+
+// const date = 'today'
+
+// const stats = [
+// 	{ id: 1, record: { value: '71,897', name: 'Total Subscribers' } },
+// 	{ id: 2, record: { value: '58.16%', name: 'Avg. Open Rate' } },
+// 	{ id: 3, record: { value: '24.57%', name: 'Avg. Click Rate' } },
+// ].map((item) => {
+//     return {
+//         ...item,
+//         record: {
+//             ...item.record,
+//             date
+//         }
+//     }
+// })
+
+// function Statistics(){
+//     return `
+//     <ul>
+//         ${stats.map(({ id, record }) => {
+//             return `
+//             <li id="${id}">
+//                 <span>${record.name}</span>
+//                 <h2>${record.value}</h2>
+//                 <span>${record.date}</span>
+//             </li><br><br>
+//             `;
+//         }).join('')}
+//     </ul>
+//     `;
+// }
+
+// const appDiv = document.getElementById('app')
+
+// appDiv.innerHTML = Statistics()
+
+// ==================== The End ====================
