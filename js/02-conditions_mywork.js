@@ -1,7 +1,7 @@
 // 2. CONDITIONS
 
 // 2.1. (45:25) (Простое УСЛОВИЕ)
-
+// Original:
 // Variant 1:
 
 // function MyApp(){
@@ -18,20 +18,17 @@
 // app.innerHTML = MyApp();
 
 
-const appDiv = document.getElementById('app');
+// const appDiv = document.getElementById('app');
 
-function MyApp(isAuth){
-    if(isAuth) 
-        return '<div>Authenticated content</div>';
-        return '<div>Log in here</div>';
-}
-appDiv.innerHTML = MyApp()
-
-
-
+// function MyApp(isAuth){
+//     if(isAuth) 
+//         return '<div>Authenticated content</div>';
+//         return '<div>Log in here</div>';
+// }
+// appDiv.innerHTML = MyApp()
 
 // Variant 2 (УПРОЩЕНИЕ):
-
+// Original:
 // function MyApp(isAuth){
 
 //     if(isAuth) return '<div>Log in here</div>'
@@ -58,14 +55,14 @@ appDiv.innerHTML = MyApp()
 
 // app.innerHTML = MyApp();
 
-// !!!!! В ТЕРНАРНОМ операторе ОБЯЗАТЕЛЬНО д.б. else (то, что идёт после ?).
-// Если я не хочу, чтобы в ТЕРНАРНОМ операторе что-то выводилось после ?, то я могу вернуть либо: а) пустые кавыки, либо: б) null:
+// !!!!! В ТЕРНАРНОМ операторе ОБЯЗАТЕЛЬНО д.б. else (то, что идёт после :).
+// Если я не хочу, чтобы в ТЕРНАРНОМ операторе что-то выводилось после :, то я могу вернуть либо: а) пустые кавыки, либо: б) null:
 // Пример: return isAuth ? '<div>Log in</div>' : '';
 
 //================================
 
 // 2.3. (58:40) (Применение логического оператора || ("или")):
-
+// Original:
 // const defaultAvatar = '../images/earnLearn.jpg';
 // function Profile(){
 
@@ -87,10 +84,34 @@ appDiv.innerHTML = MyApp()
 
 // app.innerHTML = Profile();
 
+//------------------------------
+
+// Мои пробы: деструктуризация, тернарник:
+
+// const appDiv = document.getElementById('app');
+
+// const defaultAvatar = '../images/earnLearn.jpg';
+
+// const user = {
+//     name: 'Richard Gir',
+//     avatar: 'https://images.unsplash.com/profile-1584086234832-be18ba3c6918image?dpr=2&auto=format&fit=crop&w=32&h=32&q=60&crop=faces&bg=fff'
+// }
+// function Profile({name, avatar}){
+//     // const {name, avatar} = user;
+//     return `
+//     <header>
+//         <h1>Welcome, ${name}</h1>
+//         <img src='${avatar ? avatar : defaultAvatar}' width='300px' />
+//     </header>
+//     `;
+// }
+
+// appDiv.innerHTML = Profile(user);
+
 //================================
 
-// 2.4. (1:03:30) (Применение ТЕРНАРНОГО ОПЕРАТОРА и шаблонной строки внутри другой шаблонной строки):
-
+// 2.4. (1:03:30)  (Применение ТЕРНАРНОГО ОПЕРАТОРА и шаблонной строки внутри другой шаблонной строки):
+// Original:
 // function Profile(){
 //     const user = {
 //         name: 'John Carry',
@@ -109,6 +130,28 @@ appDiv.innerHTML = MyApp()
 
 // appDiv.innerHTML = Profile();
 
+//=========================================
+
+// My version using destructuring: 
+
+// const appDiv = document.getElementById('app');
+
+// function Profile(){
+//     const user = {
+//         name: 'John Carry',
+//         avatar: 'https://images.unsplash.com/profile-1584086234832-be18ba3c6918image?dpr=2&auto=format&fit=crop&w=32&h=32&q=60&crop=faces&bg=fff'
+//     }
+//     const {name, avatar} = user;
+//     return `
+//     <header>
+//         <h1>Welcome, ${name}</h1>
+//         ${avatar ? `<img src='${avatar}' width='300' />` : '<p>Goodby</p>'}
+//     </header>
+//     `
+// }
+
+// appDiv.innerHTML = Profile();
+
 //================================
 
 // 2.5. (1:07:30) (Применение ТЕРНАРНОГО ОПЕРАТОРА и ПРОПСОВ: вывод кнопки "Download"):
@@ -124,6 +167,22 @@ appDiv.innerHTML = MyApp()
 // const appDiv = document.getElementById('app');
 
 // appDiv.innerHTML = DownloadButton({isPaid: true});
+
+
+
+const appDiv = document.getElementById('app');
+
+function DownloadButton(props){
+    return `
+    <button>
+        ${props.isPaid ? `<span>Download</span>` : `<span>Buy now</span>`}
+    </button>
+    `;
+}
+
+appDiv.innerHTML = DownloadButton({isPaid: false});
+
+
 
 //---------------------------------------
 
