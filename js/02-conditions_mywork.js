@@ -168,36 +168,7 @@
 
 // appDiv.innerHTML = DownloadButton({isPaid: true});
 
-
-
-const appDiv = document.getElementById('app');
-
-function DownloadButton(props){
-    return `
-    <button>
-        ${props.isPaid ? `<span>Download</span>` : `<span>Buy now</span>`}
-    </button>
-    `;
-}
-
-appDiv.innerHTML = DownloadButton({isPaid: false});
-
-
-
 //---------------------------------------
-
-// My variant:
-// function Buy(){
-//     const isPay = false;
-//     const notPay = true;
-//     return `
-//         ${isPay ? `<button>Download</button>` : `<button>Buy now</button>`}
-//     `;
-// }
-
-// const appBuy = document.getElementById('app');
-
-// appBuy.innerHTML = Buy();
 
 //++++++++++++++++++++++++++++++++++++++ The End 
 

@@ -9,22 +9,30 @@
 // передаваемых в виде параметров (в фигрурных скобках) в 
 // функцию-компонент:
 
-// function Checkbox({id, label, defaultChecked}){
-//     return `
-//     <div>
-//         <label for="${id}">${label}</label>
-//         <input id="${id}" type="checkbox" ${defaultChecked ? 'checked' : ''} />
-//     </div>
-//     `;
-// }
+function Checkbox({id, label, defaultChecked}){
+    return `
+    <div>
+        <label for="${id}">${label}</label>
+        <input id="${id}" type="checkbox" ${defaultChecked ? 'checked' : ''} />
+    </div>
+    `;
+}
 
-// const appDiv = document.getElementById('app');
+const appDiv = document.getElementById('app');
 
-// appDiv.innerHTML = Checkbox({
-//     id: 'checkbox', 
-//     label: 'Subscribe for update',
-//     defaultChecked: false
-// });
+appDiv.innerHTML = Checkbox({
+    id: 'checkbox', 
+    label: 'Subscribe for update',
+    defaultChecked: true
+});
+
+
+
+
+
+
+
+
 
 // ============================================
 
