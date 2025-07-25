@@ -9,30 +9,22 @@
 // передаваемых в виде параметров (в фигрурных скобках) в 
 // функцию-компонент:
 
-function Checkbox({id, label, defaultChecked}){
-    return `
-    <div>
-        <label for="${id}">${label}</label>
-        <input id="${id}" type="checkbox" ${defaultChecked ? 'checked' : ''} />
-    </div>
-    `;
-}
+// function Checkbox({id, label, defaultChecked}){
+//     return `
+//     <div>
+//         <label for="${id}">${label}</label>
+//         <input id="${id}" type="checkbox" ${defaultChecked ? 'checked' : ''} />
+//     </div>
+//     `;
+// }
 
-const appDiv = document.getElementById('app');
+// const appDiv = document.getElementById('app');
 
-appDiv.innerHTML = Checkbox({
-    id: 'checkbox', 
-    label: 'Subscribe for update',
-    defaultChecked: true
-});
-
-
-
-
-
-
-
-
+// appDiv.innerHTML = Checkbox({
+//     id: 'checkbox', 
+//     label: 'Subscribe for update',
+//     defaultChecked: true
+// });
 
 // ============================================
 
@@ -52,6 +44,29 @@ appDiv.innerHTML = Checkbox({
 //     alt: 'Bob Jones',
 //     borderRadius: '10px'
 // });
+
+
+
+const appDiv = document.getElementById('app')
+
+function Avatar({alt, ...rest}){
+    return `
+    <div>
+        <img src='${rest.src}' alt='${alt}' style='border-radius: ${rest.borderRadius}; width: 200px;'  />
+    </div>
+    `;
+}
+
+appDiv.innerHTML = Avatar({
+    src: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    alt: 'Bob Jones',
+    borderRadius: '10px'
+})
+
+
+
+
+
 
 // ============================================
 
