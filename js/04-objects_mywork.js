@@ -71,6 +71,23 @@
 //     time: '3d ago'
 // })
 
+function Message({text="No text", author='No author', time=''}){
+    return `
+    <header class="message">
+        <strong>${author}</strong> commented ${time}
+    </header>
+    <p>${text}</p>
+    `;
+}
+
+const appDiv = document.getElementById('app');
+
+appDiv.innerHTML = Message({
+    // text: 'Called client, they reassured me the invoice would be paid by the 25th.',
+    // author: 'Chelsea Hagon',
+    // time: '3d ago'
+})
+
 // =============================================
 
 // 4.4. (23:33) (На основе уже имеющегося Объекта создать 
