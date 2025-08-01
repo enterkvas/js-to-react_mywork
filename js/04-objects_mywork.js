@@ -71,22 +71,22 @@
 //     time: '3d ago'
 // })
 
-function Message({text="No text", author='No author', time=''}){
-    return `
-    <header class="message">
-        <strong>${author}</strong> commented ${time}
-    </header>
-    <p>${text}</p>
-    `;
-}
+// function Message({text="No text", author='No author', time=''}){
+//     return `
+//     <header class="message">
+//         <strong>${author}</strong> commented ${time}
+//     </header>
+//     <p>${text}</p>
+//     `;
+// }
 
-const appDiv = document.getElementById('app');
+// const appDiv = document.getElementById('app');
 
-appDiv.innerHTML = Message({
-    // text: 'Called client, they reassured me the invoice would be paid by the 25th.',
-    // author: 'Chelsea Hagon',
-    // time: '3d ago'
-})
+// appDiv.innerHTML = Message({
+//     text: 'Called client, they reassured me the invoice would be paid by the 25th.',
+//     author: 'Chelsea Hagon',
+//     time: '3d ago'
+// })
 
 // =============================================
 
@@ -97,8 +97,8 @@ appDiv.innerHTML = Message({
 
 // const users = [
 //     {
-//         name: 'Lindsay Walton',
-//         email: 'lindsay.walton@example.com'
+//         name: 'Aleksandr Bugakov',
+//         email: 'enterkvas@gmail.com'
 //     },
 //     {
 //         name: 'Whitney Francis',
@@ -108,7 +108,7 @@ appDiv.innerHTML = Message({
 //         name: 'Tom Cook',
 //         email: 'tom.cook@example.com'
 //     }
-// ];
+// ]
 
 // const livesIn = {
 //     state: 'California',
@@ -121,8 +121,6 @@ appDiv.innerHTML = Message({
 
 // -- Need to --: добавить к каждому объекту массива users
 //  объект livesIn 
-
-// -- Solution --:
 
 //--------------------------------------
 
@@ -199,8 +197,8 @@ appDiv.innerHTML = Message({
 
 // const users = [
 //     {
-//         name: 'Lindsay Walton',
-//         email: 'lindsay.walton@example.com'
+//         name: 'Aleksandr Bugakov',
+//         email: 'enterkvas@gmail.com'
 //     },
 //     {
 //         name: 'Whitney Francis',
@@ -210,7 +208,7 @@ appDiv.innerHTML = Message({
 //         name: 'Tom Cook',
 //         email: 'tom.cook@example.com'
 //     }
-// ];
+// ]
 
 // const livesIn = {
 //     state: 'California',
@@ -249,8 +247,8 @@ appDiv.innerHTML = Message({
 
 // const users = [
 //     {
-//         name: 'Lindsay Walton',
-//         email: 'lindsay.walton@example.com'
+//         name: 'Aleksandr Bugakov',
+//         email: 'enterkvas@gmail.com'
 //     },
 //     {
 //         name: 'Whitney Francis',
@@ -260,7 +258,7 @@ appDiv.innerHTML = Message({
 //         name: 'Tom Cook',
 //         email: 'tom.cook@example.com'
 //     }
-// ];
+// ]
 
 // const livesIn = {
 //     country: 'USA',
@@ -298,9 +296,63 @@ appDiv.innerHTML = Message({
 
 // appDiv.innerHTML = Users();
 
+// ---------------------------------------------------
+// ---------------------------------------------------
+
+// Мой вариант №3: создание ф-ции User() и подстановка её в функцию Users() в качестве 
+// колбэк-функции. В отличие от моего варика выше (№2) вместо параметра user в ф-ции 
+// User я использую props:
+
+// const users = [
+//     {
+//         name: 'Aleksandr Bugakov',
+//         email: 'enterkvas@gmail.com'
+//     },
+//     {
+//         name: 'Whitney Francis',
+//         email: 'whitney.francis@example.com'
+//     },
+//     {
+//         name: 'Tom Cook',
+//         email: 'tom.cook@example.com'
+//     }
+// ]
+
+// console.table(users)
+
+// const livesIn = {
+//     country: 'USA',
+//     state: 'California'
+// }
+
+// const newUsers = users.map((user) => {
+//     return {
+//         ...user,
+//         ...livesIn
+//     }
+// })
+
+// function User(props){
+//     return `
+//     <li>${props.name} with email ${props.email} lives in state ${props.state} ${props.country}</li>
+//     `;
+// }
+
+// function Users(){
+//     return `
+//     <ul>
+//         ${newUsers.map(User).join('')}
+//     </ul>
+//     `;
+// }
+
+// const appDiv = document.getElementById('app');
+
+// appDiv.innerHTML = Users();
+
 // ================================================
 
-// 1.5. (38:10) 
+// 4.5. (38:10) 
 
 //-------------------------------------------
 
@@ -344,6 +396,64 @@ appDiv.innerHTML = Message({
 // const appDiv = document.getElementById('app')
 
 // appDiv.innerHTML = Statistics()
+
+
+
+
+
+const date = 'today'
+
+const stats = [
+	{ id: 1, record: { value: '71,897', name: 'Total Subscribers' } },
+	{ id: 2, record: { value: '58.16%', name: 'Avg. Open Rate' } },
+	{ id: 3, record: { value: '24.57%', name: 'Avg. Click Rate' } },
+].map((item) => {
+    return {
+        ...item,
+        record: {
+            ...item.record,
+            date
+        }
+    }
+})
+
+console.log(stats)
+
+function Statistic({ id, record }){
+    return `
+    <li id='${id}'>
+        <span>${record.name}</span>
+        <h2>${record.value}</h2>
+        <span>as of ${record.date}</span>
+    </li><br><br>
+    `;
+}
+
+function Statistics(){
+    return `
+    <div>
+        <ul>
+            ${stats.map(Statistic).join('')}
+        </ul>
+    </div>
+    `;
+}
+
+const appDiv = document.getElementById('app');
+
+appDiv.innerHTML = Statistics();
+
+
+
+
+
+
+
+
+
+
+
+
 
 //-------------------------------------------
 
