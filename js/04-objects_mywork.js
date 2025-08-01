@@ -386,7 +386,7 @@
 //                         <span>${item.record.name}</span>
 //                         <h2>${item.record.value}</h2>
 //                         <span>${item.record.date}</span>
-//                     </li><br><br>
+//                     </li>
 //                 `;
 //             }).join('')}
 //         </ul>
@@ -397,63 +397,47 @@
 
 // appDiv.innerHTML = Statistics()
 
+// Варик вывода с использованием функции Statistic() и без лишней строки (в отличие от 
+// оригинала,здесь нет избыточного кода после return {: ...}.map((item) => { return {...):
 
+// const date = 'today'
 
+// const stats = [
+// 	{ id: 1, record: { value: '71,897', name: 'Total Subscribers' } },
+// 	{ id: 2, record: { value: '58.16%', name: 'Avg. Open Rate' } },
+// 	{ id: 3, record: { value: '24.57%', name: 'Avg. Click Rate' } },
+// ].map((item) => {
+//     return {
+//         record: {
+//             ...item.record,
+//             date
+//         }
+//     }
+// })
 
+// console.log(stats)
 
-const date = 'today'
+// function Statistic({ id, record }){
+//     return `
+//     <li id='${id}'>
+//         <span>${record.name}</span>
+//         <h2>${record.value}</h2>
+//         <span>as at ${record.date}</span>
+//     </li>
+//     `;
+// }
 
-const stats = [
-	{ id: 1, record: { value: '71,897', name: 'Total Subscribers' } },
-	{ id: 2, record: { value: '58.16%', name: 'Avg. Open Rate' } },
-	{ id: 3, record: { value: '24.57%', name: 'Avg. Click Rate' } },
-].map((item) => {
-    return {
-        ...item,
-        record: {
-            ...item.record,
-            date
-        }
-    }
-})
+// function Statistics(){
+//     return `
+//     <ul>
+//         ${stats.map(Statistic)}
+//     </ul>
+//     `;
+// }
 
-console.log(stats)
+// const appDiv = document.getElementById('app');
 
-function Statistic({ id, record }){
-    return `
-    <li id='${id}'>
-        <span>${record.name}</span>
-        <h2>${record.value}</h2>
-        <span>as of ${record.date}</span>
-    </li><br><br>
-    `;
-}
-
-function Statistics(){
-    return `
-    <div>
-        <ul>
-            ${stats.map(Statistic).join('')}
-        </ul>
-    </div>
-    `;
-}
-
-const appDiv = document.getElementById('app');
-
-appDiv.innerHTML = Statistics();
-
-
-
-
-
-
-
-
-
-
-
-
+// appDiv.innerHTML = Statistics(stats);
 
 //-------------------------------------------
 
@@ -465,22 +449,14 @@ appDiv.innerHTML = Statistics();
 // 	{ id: 1, record: { value: '71,897', name: 'Total Subscribers' } },
 // 	{ id: 2, record: { value: '58.16%', name: 'Avg. Open Rate' } },
 // 	{ id: 3, record: { value: '24.57%', name: 'Avg. Click Rate' } },
-// ].map((item) => {
-//     return {
-//         ...item,
-//         record: {
-//             ...item.record,
-//             date
-//         }
-//     }
-// })
+// ]
 
 // function Statistic(stat){
 //     return `
 //     <li id="${stat.id}">
 //         <span>${stat.record.name}</span>
 //         <h2>${stat.record.value}</h2>
-//         <span>${stat.record.date}</span>
+//         <span>${date}</span>
 //     </li><br><br>
 //     `;
 // }
