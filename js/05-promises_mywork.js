@@ -6,99 +6,56 @@
 
 // 5.1. (53:15) (Getting data from a remote server API):
 
-// #1:
+// Original: не фэчит сайт: https://swapi.dev/api/people/ - выдает ошибку и с этим сайтом какие-то проблемы. Поэтому заменил его на сайт из юр Богдана: 
 
 // const appDiv = document.getElementById('app')
 
-// function getPeople(){
+// function getText(){
 //     fetch('https://jsonplaceholder.typicode.com/todos/11')
 //         .then((response) => response.json())
 //         .then((data) => {
 //             console.log(data);
-//             const userTitle = data.title;
-//             document.querySelector('#text').textContent = userTitle;
-//         })
-// }
-
-// getPeople()
-
-// appDiv.innerHTML = `<p>* This text: "<strong id="text"></strong>" was obtained from the site jsonplaceholder.</p>`
-
-// --------------------------------------------
-
-// #2:
-
-// const appDiv = document.getElementById('app');
-
-// function getText(){
-//     fetch('https://jsonplaceholder.typicode.com/todos/56')
-//         .then((response) => response.json())
-//         .then((data) => {
-//             console.log(data);
-//             const toText = data.title;
-//             document.getElementById('text').textContent = toText;
-//         })
+//             document.querySelector('#text').textContent = data.id;
+//         });
 // }
 
 // getText()
 
-// appDiv.innerHTML = `<p>This text: "<strong id="text"></strong>" was imported from the jsonplaceholder site.</p>`
-
-// -----------------------------------------
-
-// #3:
-
-// const appDiv = document.getElementById('app')
-
-// function toText(){
-//     fetch('https://jsonplaceholder.typicode.com/todos/66')
-//         .then((response) => response.json())
-//         .then((data) => {
-//             console.log(data);
-//             const thisText = data.title;
-//             document.getElementById('mytext').textContent = thisText;
-//         })
-// }
-
-// toText()
-
-// function myText(){
-//     return `<p>This text: "<strong id="mytext"></strong>" was imported from the jsonplaceholder site.</p>`
-// }
-
-// appDiv.innerHTML = myText();
+// appDiv.innerHTML = `<p>There are <strong id='text'>--</strong> primary characters</p>`;
 
 //==================================================
 
 // 5.2. (1:02:03) (Working with errors):
 
-// const appDiv = document.getElementById('app')
+// Original: не фэчит сайт: https://swapi.dev/api/people/ - выдает ошибку и с этим сайтом какие-то проблемы. Поэтому заменил его на сайт из юр Богдана:
 
-// function getText(){
-//     fetch('https://jsonplaceholder.typicode.com/todos/11t')
-//         .then((response) => {
-//             console.log(response)
+const appDiv = document.getElementById('app')
+
+function getText(){
+    fetch('https://jsonplaceholder.typicode.com/todos/11')
+        .then((response) => {
+            console.log(response)
             
-//             if(!response.ok){
-//                 throw new Error("Error making request")
-//             }
+            if(!response.ok){
+                throw new Error("Error making request")
+            }
 
-//             return response.json();
+            return response.json();
 
-//         })
-//         .then((data) => {
-//             console.log(data);
-//             document.querySelector('#text').textContent = data.title;
-//         })
-//         .catch((error) => {
-//             console.log(error);
-//             document.querySelector('#textError').textContent = 'Could not get data';
-//         })
-// }
+        })
+        .then((data) => {
+            console.log(data);
+            document.querySelector('#text').textContent = data.title;
+        })
+        .catch((error) => {
+            console.log(error);
+            document.querySelector('#textError').textContent = 'Could not get data';
+        })
+}
 
-// getText()
+getText()
 
-// appDiv.innerHTML = `<p id="textError">This text: <strong id="text"></strong> from the other site.</p>`
+appDiv.innerHTML = `<p id="textError">This text: <strong id="text"></strong>is from the other site.</p>`
 
 //==================================================
 
@@ -118,7 +75,7 @@
 //             console.log(json);
 //             document.getElementById('text').textContent = json.title;
 //         })
-//         .catch(err => {
+//         .catch((err) => {
 //             console.log('Error fetching data: ', err);
 //             document.querySelector('p').textContent = 'Error fetching data';
 //         }).finally(() => {
