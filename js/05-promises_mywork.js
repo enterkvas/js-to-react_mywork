@@ -29,37 +29,71 @@
 
 // Original: не фэчит сайт: https://swapi.dev/api/people/ - выдает ошибку и с этим сайтом какие-то проблемы. Поэтому заменил его на сайт из юр Богдана:
 
-const appDiv = document.getElementById('app')
+// const appDiv = document.getElementById('app')
 
-function getText(){
-    fetch('https://jsonplaceholder.typicode.com/todos/11')
-        .then((response) => {
-            console.log(response)
-            
-            if(!response.ok){
-                throw new Error("Error making request")
-            }
+// function getText(){
+//     fetch('https://jsonplaceholder.typicode.com/todos/11')
+//         .then((response) => {
+//             console.log(response);
 
-            return response.json();
+//             if(!response.ok){
+//                 throw new Error('Error making request');
+//             }
 
-        })
-        .then((data) => {
-            console.log(data);
-            document.querySelector('#text').textContent = data.title;
-        })
-        .catch((error) => {
-            console.log(error);
-            document.querySelector('#textError').textContent = 'Could not get data';
-        })
-}
+//             return response.json();
+//         })
+//         .then((data) => {
+//             console.log(data);
+//             document.querySelector('#text').textContent = data.title;
+//         })
+//         .catch((err) => {
+//             console.log(err);
+//             document.querySelector('#textError').textContent = 'Could not get data';
+//         })
+// }
 
-getText()
+// getText()
 
-appDiv.innerHTML = `<p id="textError">This text: <strong id="text"></strong>is from the other site.</p>`
+// appDiv.innerHTML = `<p id='textError'>This text is <strong id='text'>--</strong> appears, if all right.</p>`
 
 //==================================================
 
 // 5.3. (1:10:10) (method finally()):
+
+// Variant 1: 
+
+const appDiv = document.getElementById('app');
+
+function getText(){
+    fetch('https://jsonplaceholder.typicode.com/todos/10')
+        .then(response => {
+            if(!response.ok){
+                throw new Error('Unsuccessfully response')
+            }
+            return response.json();
+        })
+        .then(json => {
+            console.log(json);
+            document.querySelector('#text').textContent = json.title;
+        })
+        .catch(err => {
+            console.log('Error fetching data: ', err);
+            document.querySelector('p').textContent = 'Error fetching data';
+        }).finally(() => {
+            document.querySelector('#loading').remove()
+        })        
+}
+
+getText()
+
+appDiv.innerHTML = `
+    <span id="loading">Loading...</span>
+    <p>*This text <strong id="text"></strong> other any text.</p>
+`;
+
+//-------------------------------------------
+
+// Variant 2: во 2-й .then() вместо data подставляем json (показываем, что здесь нет зарезервированных переменных):
 
 // const appDiv = document.getElementById('app')
 
@@ -90,34 +124,6 @@ appDiv.innerHTML = `<p id="textError">This text: <strong id="text"></strong>is f
 //     <p>* There are <strong id="text">--</strong> other parts. </p>
 // `;
 
-// const appDiv = document.getElementById('app');
-
-// function getText(){
-//     fetch('https://jsonplaceholder.typicode.com/todos/10')
-//         .then(response => {
-//             if(!response.ok){
-//                 throw new Error('Unsuccessfully response')
-//             }
-//             return response.json();
-//         })
-//         .then(json => {
-//             console.log(json);
-//             document.querySelector('#text').textContent = json.title;
-//         })
-//         .catch(err => {
-//             console.log('Error fetching data: ', err);
-//             document.querySelector('p').textContent = 'Error fetching data';
-//         }).finally(() => {
-//             document.querySelector('#loading').remove()
-//         })        
-// }
-
-// getText()
-
-// appDiv.innerHTML = `
-//     <span id="loading">Loading...</span>
-//     <p>*This text <strong id="text"></strong> other any text.</p>
-// `;
 
 //==================================================
 
